@@ -31,6 +31,9 @@ elasticdump \
        	--input-index=${ES_INPUT_INDEX} \
        	--output=${ES_OUTPUT_URL} \
        	--output-index=${ES_OUTPUT_INDEX} \
-       	--limit=${ES_LIMIT_CHUNK:-500}
+       	--limit=${ES_LIMIT_CHUNK:-1000} \
+	--bulk=true \
+	--bulk-use-output-index-name \
+	--type=data
 
 exit $?
