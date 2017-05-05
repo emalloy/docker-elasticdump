@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: elastic-dump-import
+spec:
+  template:
+    metadata:
+      labels:
+        app: elastic-dump-import
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: elastic-dump-import
+        image: lvejm/elasticdump:0.3
+        resources:
+          limits:
+            cpu: 80m
+            memory: 1284Mi
+        env:
+        - name: ES_INPUT_URL
+          value: ""
+        - name: ES_OUTPUT_URL
+          value: "http://elasticsearch:9200"
+        - name: ES_INPUT_INDEX
+          value: 
+        - name: ES_OUTPUT_INDEX
+          value: 
